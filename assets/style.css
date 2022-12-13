@@ -1,0 +1,41 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+header {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    background-image: linear-gradient(to right, #4D55E3, indigo);
+}
+
+.input-group {
+    width: 100%;
+}
+
+.container {
+    text-align: center;
+}
+
+.btn {
+    opacity: 80%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+div {
+    display: block;
+}
+
+.card {
+    border-color: black;
+    border: 1px solid ;
+}
+
+.border-bottom {
+    padding-bottom: 15px;
+    border-color: darkgray;
+}
