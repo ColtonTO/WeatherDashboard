@@ -20,28 +20,41 @@
           </h1>
         </div>
       </header>
-      <div class= "flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh">
+      <main> 
+        <div class="row"> 
+        <div class= "flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh">
       <div class="col-12 col-md-3 p-3" style="width: 400px;">
           <div class="container grid border-bottom">
                 <div class="g-col-4"> 
                     <h3>Search for a City: </h3>
                 </div>
                 <div class="input-group mb-3 grid g-col-4">
-                    <input type="text" class="form-control">
+                    <form id="search-form" class="form w-100"> 
+                        <label class="form-label" for="city"></label>
+                    <input name="city" id="search-input" type="text" placeholder="San Diego" class="form-control">
+                </form>
                   </div>
                   <div class="d-grid gap-2 col-12">
-                    <button class="btn btn-primary" type="button">Search</button>
+                    <button class="btn btn-primary" type="button" id="city-search">Search</button>
                   </div>
             </div>
         </div>
-        <div class="col-12 col-md-8 p-3 text-dark card">
-            <div class="card-body mb-3 p-3"> 
 
+        <main class="row">
+            <div class="col-3">
+                <div class="history col-11 m-2 rounded text-center mt-4"></div>
             </div>
-        </div>
-
-        </div>
+            <div class="col-8">
+                <div class="col-12 cityBox p-0 border border-secondary">
+                    <h2 class="city-title"></h2>
+                    <div id="icon"><img id="wicon" src="" alt=""></div>
+                    <div class="details"></div>
+                </div>
+            <h2>5-Day Forecast:</h2>
+            <div class="row justify-content-between day-forecast"></div>
+        </main>
     
     <script src="assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js" ></script>
 </body>
 </html>
