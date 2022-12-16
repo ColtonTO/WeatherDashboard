@@ -10,14 +10,14 @@ var dailycontainer = $(".details");
 var localCities = function () {
   var searchStorage = JSON.parse(localStorage.getItem("searchStorage"));
   if (searchStorage == null) {
-    searchStorage = ["Seattle, Los Angeles, New York, Denver"];
+    searchStorage = ["Seattle", "Los Angeles", "New York", "Denver"];
     localStorage.setItem("searchStorage", JSON.stringify(searchStorage));
   }
   var histContainer = $(".history");
   histContainer.html("");
   for (i in searchStorage) {
     var buttonEl = $("<button>")
-    .addClass("list-group-item col-9 bg-primary m-2")
+    .addClass("list-group-item col-9 bg-secondary m-2")
     .attr ("id", "citySearchList")
     .attr("type", "button")
     .text(searchStorage[i]);
