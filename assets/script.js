@@ -10,14 +10,14 @@ var dailycontainer = $(".details");
 var localCities = function () {
   var searchStorage = JSON.parse(localStorage.getItem("searchStorage"));
   if (searchStorage == null) {
-    searchStorage = ["Seattle", "Los Angeles", "New York", "Denver"];
+    searchStorage = ["Seattle", "Los Angeles", "New York", "Denver", "San Francisco", "Orlando", "Chicago", "Austin"];
     localStorage.setItem("searchStorage", JSON.stringify(searchStorage));
   }
   var histContainer = $(".history");
   histContainer.html("");
   for (i in searchStorage) {
     var buttonEl = $("<button>")
-    .addClass("list-group-item col-9 bg-secondary m-2")
+    .addClass("list-group-item col-9 bg-info m-2")
     .attr ("id", "citySearchList")
     .attr("type", "button")
     .text(searchStorage[i]);
@@ -88,11 +88,12 @@ let getIndex = function(response) {
   var forecast = function(city) {
     var forecastContainerEl = $(".day-forecast")
     forecastContainerEl.html("");
-    var city = cityNameEl.value.trim();
     var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=" + apiKey;
 
-    fetch(apiUrl).then(function(response) {
-      response.json().then(function(response) {
+    fetch(apiUrl)
+    .then(function(response) {
+      response.json()
+      .then(function(response) {
         var idx=getIndex(response);
 
         for (i=0;i<5;i++) {
@@ -115,7 +116,7 @@ let getIndex = function(response) {
           var cardHumidityEl = $("<p>").addClass("card-text").text("Humidity: " + humidity + "%");
 
           cardEl.append(cardTitleEl);
-          divEl.append(cardIconEl);
+          cardEl.append(cardIconEl);
           cardEl.append(cardTempEl);
           cardEl.append(cardWindEl);
           cardEl.append(cardHumidityEl);
