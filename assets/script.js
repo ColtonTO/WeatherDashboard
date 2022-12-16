@@ -4,8 +4,40 @@ var cityNameEl = document.querySelector("#cityname")
 const apiKey = "84041f365739eac82d6fc73abf633228"
 var forecastEl = document.querySelector('.forecast')
 var cityDate = document.querySelector('.city-title')
-var cityHistory = document.querySelector('.history')
+var cityHistory = $('.history')
 var dailycontainer = $(".details");
+
+var localCities = function () {
+  var searchStorage = JSON.parse(localStorage.getItem("searchStorage"));
+  if (searchStorage == null) {
+    searchStorage = ["Seattle, Los Angeles, New York, Denver"];
+    localStorage.setItem("searchStorage", JSON.stringify(searchStorage));
+  }
+  var histContainer = $(".history");
+  histContainer.html("");
+  for (i in searchStorage) {
+    var buttonEl = $("<button>")
+    .addClass("list-group-item col-9 bg-primary m-2")
+    .attr ("id", "citySearchList")
+    .attr("type", "button")
+    .text(searchStorage[i]);
+    histContainer.append(buttonEl);
+  }
+};
+
+var updateHistory = function(city) {
+  var searchStorage = JSON.parse(localStorage.getItem("searchStorage"));
+  searchStorage.unshift(city);
+  searchStorage.pop();
+  localStorage.setItem("searchStorage", JSON.stringify(searchStorage));
+
+  var listItems = $(".list-group-item");
+
+  for (l in listItems) {
+
+  listItems[l].textContent = searchStorage[l];
+  }
+}
 
 var weather = function(city) { 
   fetch(
@@ -110,13 +142,15 @@ if (targetId === "citySearchList") {
 if (city) {
     weather(city);
     forecast(city);
+    updateHistory(city);
 } else {
     alert("Please enter a city")
 }
 }
+localCities()
 
 $("button").click(submitHandler);
-//console.log("click")
+
 
 
 
